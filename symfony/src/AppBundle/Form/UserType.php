@@ -24,7 +24,7 @@ class UserType extends AbstractType
             ->add('password', RepeatedType::class, array(
                 'type' => PasswordType::class,
                 'invalid_message' => 'The password fields must match.',
-                'required' => true,
+                'required' => $options['passwordRequired'],
                 'first_options' => array('label' => 'Password'),
                 'second_options' => array('label' => 'Repeat Password'),
             ))
@@ -37,7 +37,8 @@ class UserType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Entity\User'
+            'data_class' => 'AppBundle\Entity\User',
+            'passwordRequired' => true
         ));
     }
 
