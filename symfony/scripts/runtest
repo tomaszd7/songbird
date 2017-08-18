@@ -1,4 +1,5 @@
 # symfony/scripts/runtest
 #!/bin/bash
-docker-compose exec php bin/console cache:clear --no-warmup
-docker-compose exec php vendor/bin/codecept run acceptance
+scripts/resetapp
+#scripts/console cache:clear --no-warmup
+docker-compose exec php vendor/bin/codecept run acceptance $@
